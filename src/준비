@@ -23,6 +23,8 @@ pnpm install -D prettier
 pnpm install styled-components
 pnpm install react-router
 
+pnpm install -D @types/node @types/react @types/react-dom typescript typescript-eslint prettier
+
 설정 들어가서
 노드지원 체크
 프리티어 설정가서
