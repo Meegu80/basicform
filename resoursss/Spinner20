@@ -1,3 +1,6 @@
+// React + TypeScript
+// 원래 파일명 App.tsx
+
 import styled, { keyframes } from 'styled-components';
 
 // 애니메이션 정의
