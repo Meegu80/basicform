@@ -1,0 +1,91 @@
+// React + TypeScript
+// 원래 파일명 SearchBar.tsx
+
+import { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router";
+
+const Form = styled.form`  // for → form
+  margin: 0 auto;
+  width: 500px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const Align = styled.div`  // di → div
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Input = styled.input`  // inpu → input
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #dc3b3b;
+    box-shadow: 0 0 0 3px rgba(220, 59, 59, 0.1);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+`;
+
+const Button = styled.button`  // butto → button
+  padding: 14px 28px;
+  border: none;
+  background-color: #dc3b3b;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #c02d2d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 59, 59, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`;
+
+function SearchBar() {
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <Form
+        onSubmit={(e) => {  // 수정
+          e.preventDefault();
+          navigate(`/search?keyword=${keyword}`);  // 수정: 백틱을 괄호로
+        }}
+      >
+        <Align>
+          <Input
+            onChange={(e) => setKeyword(e.target.value)}
+            placeholder="검색어를 입력하세요"
+          />
+          <Button type="submit">Search</Button>
+        </Align>
+      </Form>
+    </div>
+  );
+}
+
+export default SearchBar;
